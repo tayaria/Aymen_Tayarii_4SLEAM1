@@ -1,11 +1,11 @@
-# Étape 1 : On télécharge ABSOLUMENT TOUT en ONLINE (1 seule fois)
+# Étape 1 : Téléchargement complet des dépendances (ONLINE, sans --fail-never
 FROM maven:3.9.9-eclipse-temurin-17 AS deps
 WORKDIR /app
 COPY pom.xml .
-# Cette commande magique télécharge TOUTES les dépendances + plugins + BOM Spring Boot
-RUN mvn -B dependency:go-offline dependency:resolve-plugins verify --fail-never
+# On force le téléchargement de TOUT sans ignorer les erreurs
+RUN mvn -B dependency:go-offline dependency:resolve-plugins package -DskipTests
 
-# Étape 2 : Build 100 % offline (plus jamais de réseau)
+# Étape 2 : Build 100% offline
 FROM maven:3.9.9-eclipse-temurin-17 AS build
 WORKDIR /app
 COPY --from=deps /root/.m2 /root/.m2
