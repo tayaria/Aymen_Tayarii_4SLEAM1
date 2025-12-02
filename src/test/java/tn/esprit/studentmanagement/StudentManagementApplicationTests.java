@@ -11,6 +11,7 @@ class StudentManagementApplicationTests {
 
     @Test
     void contextLoads() {
+        // Ce test est volontairement vide, il vérifie seulement que le contexte Spring se charge correctement
     }
 
 
