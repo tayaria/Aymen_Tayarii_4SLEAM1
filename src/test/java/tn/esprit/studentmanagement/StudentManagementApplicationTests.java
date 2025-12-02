@@ -15,11 +15,4 @@ class StudentManagementApplicationTests {
     }
 
 
-
-    @Test
-    void simpleTest() {
-        int a = 2 + 2;
-        assertEquals(4, a, "2 + 2 doit faire 4");
-    }
-
 }
